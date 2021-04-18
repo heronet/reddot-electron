@@ -1,0 +1,47 @@
+  <mat-card class="example-card mat-elevation-z3">
+    <mat-card-header>
+      <img mat-card-avatar class="example-header-image" [src]="'./assets/avatar.png'" [alt]="'avatar'">
+      <mat-card-title>{{post?.title}}</mat-card-title>
+      <mat-card-subtitle>{{post?.creatorName}}</mat-card-subtitle>
+      <mat-card-subtitle>{{post?.date | date: 'short'}}</mat-card-subtitle>
+      <mat-card-subtitle>{{likesCount}} Likes</mat-card-subtitle>
+    </mat-card-header>
+  <img mat-card-image *ngIf="post?.imagePath" [src]="post?.imagePath" [alt]="post.title">
+    <mat-card-content>
+      <p style="white-space: pre-wrap">
+        {{post?.content}}
+      </p>
+    </mat-card-content>
+    <mat-card-actions style="display: flex;" *ngIf="postDeletable">
+      <button mat-icon-button color="primary" (click)="likePost()" *ngIf="!postLiked"><mat-icon>thumb_up_off_alt</mat-icon></button>
+      <button mat-icon-button color="primary" (click)="unlikePost()" *ngIf="postLiked"><mat-icon>thumb_up</mat-icon></button>
+      <button mat-icon-button color="primary" [routerLink]="['/edit/', post._id]" *ngIf="userId == post.creator"><mat-icon>edit</mat-icon></button>
+      <span class="menu-spacer"></span>
+      <button mat-mini-fab color="accent" (click)="deletePost()" *ngIf="userId == post.creator">
+        <mat-icon>delete</mat-icon>
+      </button>
+    </mat-card-actions>
+    <mat-expansion-panel  class="mat-elevation-z3" style="user-select: none;" (opened)="panelOpenState = true" (closed)="panelOpenState = false">
+      <mat-expansion-panel-header>
+        <mat-panel-title>
+          Comments
+        </mat-panel-title>
+        <mat-panel-description>
+            {{panelOpenState ? 'Hide' : 'Show'}} Comments
+        </mat-panel-description>
+      </mat-expansion-panel-header>
+      <div>
+        <form (ngSubmit)="newComment(f)" #f="ngForm" *ngIf="postDeletable">
+          <mat-form-field appearance="outline" style="width: 100%;">
+            <textarea matInput required type="text" rows="4" ngModel placeholder="Add Comment" name="comment"></textarea>
+          </mat-form-field>
+          <button [disabled]="f.invalid" mat-raised-button type="submit" color="primary">Comment</button>
+        </form>
+      </div>
+        <mat-card *ngFor="let comment of comments" class="mat-elevation-z2" style="margin: 5px 0;">
+          <p style="font-size: 15px;">{{comment.author}}</p>
+          <mat-card-subtitle>{{comment.opinion}}</mat-card-subtitle>
+        </mat-card>
+    </mat-expansion-panel>
+  </mat-card>
+

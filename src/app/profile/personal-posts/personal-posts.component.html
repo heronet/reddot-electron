@@ -1,0 +1,6 @@
+<br>
+<mat-card>
+    <mat-card-title style="text-align: center;">{{username}}'s Posts</mat-card-title>
+</mat-card>
+<app-post *ngFor="let post of posts" [userId]="userId" [post]="post" [postDeletable]="true" class="feed" (postDeleted)="deletePost($event)"></app-post>
+<p style="text-align: center; font-size: 20px;" *ngIf="!(posts.length > 0)"><br>No Posts Yet</p>

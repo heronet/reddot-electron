@@ -1,0 +1,29 @@
+<mat-toolbar class="mat-elevation-z8 app-toolbar" color="primary">
+  <mat-toolbar-row class="">
+    <button mat-button>
+        <mat-icon >engineering</mat-icon>
+        <a style="text-decoration: none; color: black; margin-left: 10px;font-size: 25px;" routerLink="/">Reddot</a>
+    </button>
+    <span class="menu-spacer"></span>
+    <button mat-button *ngIf="username" [style]="!usernameButton ? 'display: none;' : ''" class="username" (click)="onProfileClick()"><mat-icon>settings_accessibility</mat-icon> {{username}}</button>
+    <div class="nav-links">
+      <a mat-button [routerLink]="'/create'" *ngIf="userIsAuthenticated">Create Post</a>
+      <a mat-button [routerLink]="'auth/login'" *ngIf="!userIsAuthenticated">Login</a>
+      <a mat-button [routerLink]="'auth/signup'" *ngIf="!userIsAuthenticated">Signup</a>
+      <a mat-button [routerLink]="'/messages'" *ngIf="userIsAuthenticated">Messages</a>
+      <button mat-button *ngIf="userIsAuthenticated" (click)="onLogout()">Logout</button>
+    </div>
+    <button mat-icon-button (click)="searchBar = !searchBar" #sButton><mat-icon>search</mat-icon></button>
+    <button mat-icon-button>
+        <mat-icon (click)="onToggle();">menu</mat-icon>
+    </button>
+  </mat-toolbar-row>
+</mat-toolbar>
+<mat-card *ngIf="searchBar" #bar>
+    <form #f="ngForm" (ngSubmit)="search(f); searchBar = !searchBar">
+        <mat-form-field  style="width: 100%;">
+          <input type="Search" matInput placeholder="Search by name" ngModel name="search" required>
+        </mat-form-field>
+        <button mat-stroked-button [disabled]="f.invalid" type="submit" color="accent">Search</button>
+    </form>
+</mat-card>

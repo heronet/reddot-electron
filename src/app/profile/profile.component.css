@@ -1,0 +1,29 @@
+mat-spinner {
+  margin: 0 auto;
+  margin-top: 50px;
+}
+table {
+  width: 100%;
+}
+.container {
+  max-width: 70%;
+  margin: 5px auto;
+  padding: 10px;
+  padding-top: 0;
+  margin-top: 0;
+}
+.example-form {
+  min-width: 150px;
+  max-width: 500px;
+  width: 100%;
+}
+
+.example-full-width {
+  width: 100%;
+}
+.profile-image {
+  display: block;
+  height: 200px;
+  width: 200px;
+  margin: 5px auto;
+}

@@ -1,0 +1,13 @@
+.example-card {
+    max-width: 85vw;
+    width: 400px;
+    padding: 15px;
+    margin: 10px auto;
+    margin-bottom: 5px;
+}
+.menu-spacer {
+  flex: 1 1 auto;
+}
+.example-header-image {
+  background-size: cover;
+}

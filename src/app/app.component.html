@@ -1,0 +1,19 @@
+<mat-drawer-container class="drawer-container">
+  <mat-drawer #drawer [mode]="'side'">
+    <mat-nav-list style="user-select: none;">
+      <a mat-list-item (click)="drawer.toggle()">
+        <mat-icon>clear</mat-icon> <span style="margin-left: 10px;">Close</span>
+      </a>
+      <a mat-list-item routerLink="/" (click)="drawer.toggle()"><mat-icon>store</mat-icon><span style="margin-left: 10px;">Home</span></a>
+      <a mat-list-item *ngIf="!userIsAuthenticated" routerLink="auth/login" (click)="drawer.toggle()"><mat-icon>fingerprint</mat-icon> <span style="margin-left: 10px;">Login</span></a>
+      <a mat-list-item *ngIf="!userIsAuthenticated" routerLink="auth/signup" (click)="drawer.toggle()"><mat-icon>account_circle</mat-icon> <span style="margin-left: 10px;">Signup</span></a>
+      <a mat-list-item *ngIf="userIsAuthenticated" routerLink="/create" (click)="drawer.toggle()"><mat-icon>add_circle_outline</mat-icon> <span style="margin-left: 10px;">Create Post</span></a>
+      <a mat-list-item *ngIf="userIsAuthenticated" routerLink="/messages" (click)="drawer.toggle()"><mat-icon>message</mat-icon> <span style="margin-left: 10px;">Messages</span></a>
+      <a mat-list-item *ngIf="userIsAuthenticated" (click)="drawer.toggle(); onLogout()"><mat-icon>eject</mat-icon> <span style="margin-left: 10px;">Logout</span></a>
+    </mat-nav-list>
+  </mat-drawer>
+  <mat-drawer-content>
+    <app-header (buttonClicked)="drawer.toggle()"></app-header>
+    <router-outlet></router-outlet>
+  </mat-drawer-content>
+</mat-drawer-container>

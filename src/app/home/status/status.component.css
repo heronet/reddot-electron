@@ -1,0 +1,30 @@
+.my-form {
+  width: 400px;
+  padding: 12px;
+  display: flex;
+  flex-direction: column;
+}
+
+.card-holder {
+  margin: 0 auto;
+  max-width: 600px;
+  min-width: 200px;
+}
+
+.card {
+  margin: 10px auto;
+  display: flex;
+  justify-content: center;
+  max-width: 85vw;
+  width: 400px;
+  padding: 15px;
+  flex-direction: row;
+}
+.example-container {
+  padding: 10px;
+  margin: 5px 10px;
+}
+
+mat-spinner {
+  margin: 0 auto;
+}

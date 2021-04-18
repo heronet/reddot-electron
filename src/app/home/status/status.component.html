@@ -1,0 +1,14 @@
+<section class="card-holder" *ngIf="userAuthenticated">
+  <mat-card class="card mat-elevation-z3">
+    <form #f="ngForm" (ngSubmit)="onSubmit(f); f.resetForm()" class="my-form">
+      <mat-form-field appearance="outline" style="width: 100%; margin: 0; padding: 0;">
+        <mat-label>What's on your mind?</mat-label>
+        <textarea rows="4" matInput type="text" placeholder="Write your post" name="post_content" [ngModel]="post_content"
+          required #contentInput="ngModel"></textarea>
+        <mat-error *ngIf="contentInput.hasError('required')">Field must not be empty</mat-error>
+      </mat-form-field>
+      <button type="submit" mat-raised-button color="primary"
+        [disabled]="f.invalid">Post</button>
+    </form>
+  </mat-card>
+</section>

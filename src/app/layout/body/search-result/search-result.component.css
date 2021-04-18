@@ -1,0 +1,12 @@
+.user {
+    margin: 5px auto;
+    width: 90vw;
+    padding: 10px;
+    box-shadow: 4px 2px #888888cc;
+    display: flex;
+}
+.avatar {
+    height: 100px;
+    width: 100px;
+    margin-right: 10px;
+}

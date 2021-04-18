@@ -1,0 +1,25 @@
+<div class="example-container mat-elevation-z3">
+  <div>
+    <h1 style="text-align: center; margin: 0;">Login</h1>
+  </div>
+</div>
+<section class="card-holder">
+  <mat-card>
+    <form #f="ngForm" (ngSubmit)="onSubmit(f)" class="my-form">
+      <mat-form-field>
+        <input matInput type="email" placeholder="Your email" name="email" ngModel email required #emailInput="ngModel">
+        <mat-error *ngIf="emailInput.hasError('required')">Email is invalid</mat-error>
+        <mat-error *ngIf="!emailInput.hasError('required')">Field must not be empty</mat-error>
+      </mat-form-field>
+      <mat-form-field hintLabel="Should be at least 6 characters long" style="margin-bottom: 10px;">
+        <input matInput type="password" placeholder="Your Password" name="password" ngModel required minlength="6"
+          #pwInput="ngModel">
+        <mat-icon matSuffix>visibility_off</mat-icon>
+        <mat-hint align="end">{{pwInput.value?.length}} / 6</mat-hint>
+        <mat-error>Has to be at least 6 characters long.</mat-error>
+      </mat-form-field>
+      <button type="submit" mat-raised-button color="primary" [disabled]="f.invalid" *ngIf="!isLoading">Submit</button>
+      <mat-spinner *ngIf="isLoading" [diameter]="40"></mat-spinner>
+    </form>
+  </mat-card>
+</section>

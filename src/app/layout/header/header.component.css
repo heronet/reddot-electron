@@ -1,0 +1,22 @@
+.menu-spacer {
+  flex: 1 1 auto;
+}
+
+.app-toolbar {
+  position: sticky;
+  position: -webkit-sticky;
+  backdrop-filter: blur(10px);
+  color: black;
+  background: rgba(255, 255, 255, 0.295);
+  /* For macOS/iOS Safari */
+  top: 0;
+  /* Sets the sticky toolbar to be on top */
+  z-index: 1000;
+  /* Ensure that your app's content doesn't overlap the toolbar */
+
+}
+@media only screen and (max-width: 600px) {
+  .nav-links {
+    display: none;
+  }
+}
